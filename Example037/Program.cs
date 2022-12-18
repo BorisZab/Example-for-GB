@@ -1,6 +1,5 @@
-﻿//Задача №48: Задайте двумерный массив. найдите элементы, у которых оба индекса не четные
-// и замените эти элементы на их квадраты.
-
+﻿// Задача 51. Задайте двумерный массив. Найдите сумму элементов
+//находящихся на главной дигонали( с индексами (0,0); (1,1))
 void InputMatrix(int[, ] matrix)
 {
     for (int i = 0; i < matrix.GetLength(0); i++)
@@ -16,18 +15,23 @@ void InputMatrix(int[, ] matrix)
 
 void ReleaseMatrix(int[, ] matrix)
 {
+    int result = 0;
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            if (i % 2 == 1 && j % 2 == 1)
+            if (i == j && j == matrix.GetLength(1) - 1)
             {
-                matrix[i, j] *= matrix[i, j];
+                result += matrix[i, j];
+                Console.Write($"{matrix[i, j]} = ");
             }
-            Console.Write($"{matrix[i, j]} \t");
+            else if (i == j){
+                result += matrix[i, j];
+                Console.Write($"{matrix[i, j]} + ");
+            }
         }
-        Console.WriteLine();
     }
+    Console.Write(result);
 }
 
 Console.Clear();
@@ -36,5 +40,5 @@ int[] coord = Console.ReadLine().Split(" ").Select(s => int.Parse(s)).ToArray();
 int[,] matrix = new int[coord[0], coord[1]];
 Console.WriteLine("Начальная матрица: ");
 InputMatrix(matrix);
-Console.WriteLine("Результат: ");
+Console.Write("Результат: ");
 ReleaseMatrix(matrix);
