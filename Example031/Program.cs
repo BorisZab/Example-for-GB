@@ -1,12 +1,10 @@
-﻿Console.Clear();
-
-//void InputArray(int[] array)
-// {
-//     for (int i = 0; i < array.Length; i++)
-//         array[i] = new Random().Next(1, 11);
-// }
-int[] a= {1, 2, 3 ,4 ,5};
-int []b = a;
+﻿//Напишит епрограмму, которая будет создовать копию заданного массива
+// с помощью поэлементного копирования
+Console.Clear();
+int[] a = { 1, 2, 3, 4, 5 };
+int[] b = new int[a.Length];
+for (int i = 0; i < a.Length; i++)
+    b[i] = a[i];
 b[0] = -1;
-Console.WriteLine(a);
-Console.WriteLine(b);
+Console.WriteLine($"[{string.Join(", ", a)}]");
+Console.WriteLine($"[{string.Join(", ", b)}]");
